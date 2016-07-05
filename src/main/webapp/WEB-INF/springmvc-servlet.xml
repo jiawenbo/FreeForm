@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd ">
+	<!-- 设置切面允许 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<mvc:resources location="/resources/admin/" mapping="/resources/admin/**" />
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<context:component-scan base-package="com.jeff" />
+	<!-- <mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/**"/>
+			<bean id="loginInterceptor" class="com.jeff.web.common.LoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors> -->
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		为jsp添加jstl标签支持
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp"></property>
+	</bean> -->
+	
+	<!-- 设置freemarker视图解析器 -->
+	<bean id="freemarkerResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="order" value="1" />
+		<property name="suffix" value=".ftl" />
+		<property name="contentType" value="text/html;charset=utf-8"></property>
+		<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
+	</bean>
+	<!-- freemarker设置 -->
+	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/views/" />
+		<!-- 配置freemarker的全局变量 -->
+		<property name="freemarkerVariables">
+			<map>
+				<!-- admin的路径 -->
+				<entry key="adminBase" value="/tcl/resources/admin" />
+			</map>
+		</property>
+		<property name="freemarkerSettings">
+			<props>
+				<!-- 刷新模板的周期 -->
+				<prop key="template_update_delay">5</prop>
+				<!-- 模板的编码格式 -->
+				<prop key="default_encoding">UTF-8</prop>
+				<!-- 本地化设置 -->
+				<prop key="locale">UTF-8</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="time_format">HH:mm:ss</prop>
+				<prop key="number_format">0.####</prop>
+				<prop key="boolean_format">true,false</prop>
+				<prop key="whitespace_stripping">true</prop>
+				<prop key="tag_syntax">auto_detect</prop>
+				<prop key="url_escaping_charset">UTF-8</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	<!-- 设置最大上传文件大小50M -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="50000000"/>
+	</bean>
+	
+	<mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+	
+	<!-- 配置客户端需要的内容类型  -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="text/xml" />
+				<entry key="html" value="text/html" />
+			</map>
+		</property>
+		<property name="favorParameter" value="true" />
+	</bean>
+	
+	
+	
+	
+</beans>
