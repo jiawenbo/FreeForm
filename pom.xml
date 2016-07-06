@@ -34,6 +34,8 @@
 		<itextpdf.version>5.5.8</itextpdf.version>
 		<freemarker.version>2.3.20</freemarker.version>
 		<jetty.version>8.1.16.v20140903</jetty.version>
+		<mongo.version>3.2.2</mongo.version>
+		<hibernte-validator.version>4.3.1.Final</hibernte-validator.version>
 	</properties>
 
 	<build>
@@ -233,6 +235,13 @@
 			<version>${hibernate-core.version}</version>
 		</dependency>
 		
+		<!-- hibernate validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernte-validator.version}</version>	
+		</dependency>
+		
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
@@ -295,5 +304,13 @@
   			<artifactId>itextpdf</artifactId>
   			<version>${itextpdf.version}</version>
 		</dependency>
+		
+		<!-- mongodb java dirver -->
+		<dependency>
+	        <groupId>org.mongodb</groupId>
+	        <artifactId>mongodb-driver</artifactId>
+	        <version>${mongo.version}</version>
+    	</dependency>
+		
 	</dependencies>
 </project>

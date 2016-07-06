@@ -6,24 +6,25 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<context:component-scan base-package="com.soap.web.dao" />
 	<bean id="sessionFactory" 
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="dataSource" ref="proxoolDataSource" />
+		
+		<property name="dataSource" ref="dataSource" />
+		
 		<property name="packagesToScan">
 			<list>
-				<value>com.jeff.modules.entity</value>
+				<value>${hibernate.entityPackagesToScan}</value>
 			</list>
 		</property>
 		
 		<!-- 配置Hibernate进行操作的细节 -->
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
 				<!-- 是否日志输出sql -->
-				<prop key="hibernate.show_sql">true</prop>
-				<!-- 是否使用数据库外连接 -->
-				<prop key="hibernate.use_outer_join">true</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<!-- 是否使用外连接 -->
+				<prop key="hibernate.use_outer_join">${hibernate.use_outer_join}</prop>
 				
 			</props>
 		</property>

@@ -9,11 +9,36 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd ">
+	
+	<!-- 扫描包 -->
+	<context:component-scan base-package="com.jeff" />
+	
+	<!-- 引入properties文件 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:app.properties</value>
+			</list>
+		</property>
+	</bean>
+	
 	<!-- 设置切面允许 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	<mvc:resources location="/resources/admin/" mapping="/resources/admin/**" />
-	<mvc:annotation-driven></mvc:annotation-driven>
-	<context:component-scan base-package="com.jeff" />
+	
+	<mvc:annotation-driven validator="validator">
+		<!-- 将string类型转换为json类型 -->
+		 <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+	</mvc:annotation-driven>
+	
 	<!-- <mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/admin/**"/>
@@ -34,6 +59,7 @@
 		<property name="contentType" value="text/html;charset=utf-8"></property>
 		<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
 	</bean>
+	
 	<!-- freemarker设置 -->
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<property name="templateLoaderPath" value="/WEB-INF/views/" />
@@ -47,18 +73,18 @@
 		<property name="freemarkerSettings">
 			<props>
 				<!-- 刷新模板的周期 -->
-				<prop key="template_update_delay">5</prop>
+				<prop key="template_update_delay">${freemarker.template_update_delay}</prop>
 				<!-- 模板的编码格式 -->
-				<prop key="default_encoding">UTF-8</prop>
+				<prop key="default_encoding">${freemarker.default_encoding}</prop>
 				<!-- 本地化设置 -->
-				<prop key="locale">UTF-8</prop>
-				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
-				<prop key="time_format">HH:mm:ss</prop>
-				<prop key="number_format">0.####</prop>
-				<prop key="boolean_format">true,false</prop>
-				<prop key="whitespace_stripping">true</prop>
-				<prop key="tag_syntax">auto_detect</prop>
-				<prop key="url_escaping_charset">UTF-8</prop>
+				<prop key="locale">${freemarker.locale}</prop>
+				<prop key="datetime_format">${freemarker.datetime_format}</prop>
+				<prop key="time_format">${freemarker.time_format}</prop>
+				<prop key="number_format">${freemarker.number_format}</prop>
+				<prop key="boolean_format">${freemarker.boolean_format}</prop>
+				<prop key="whitespace_stripping">${freemarker.whitespace_stripping}</prop>
+				<prop key="tag_syntax">${freemarker.tag_syntax}</prop>
+				<prop key="url_escaping_charset">${freemarker.url_escaping_charset}</prop>
 			</props>
 		</property>
 	</bean>
@@ -66,20 +92,27 @@
 	
 	<!-- 设置最大上传文件大小50M -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="50000000"/>
+		<property name="maxUploadSize" value="${upload.maxUploadSize}"/>
 	</bean>
 	
-	<mvc:annotation-driven>
-        <mvc:message-converters>
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                <property name="supportedMediaTypes">
-                    <list>
-                        <value>application/json;charset=UTF-8</value>
-                    </list>
-                </property>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>
+	<!-- 以下部分是验证器的消息设置和验证设置 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:validate/Validate</value>
+			</list>
+		</property>
+		<property name="useCodeAsDefaultMessage" value="false" />
+		<property name="defaultEncoding" value="UTF-8"/>
+		<property name="cacheSeconds" value="60"/>
+	</bean>
+	
+	<bean id="validator" 
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+		<property name="validationMessageSource" ref="messageSource"></property>
+	</bean>
 	
 	<!-- 配置客户端需要的内容类型  -->
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
