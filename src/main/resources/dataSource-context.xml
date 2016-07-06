@@ -12,22 +12,22 @@
 		<property name="password" value="${jdbc.password}" />
 		
 		<!-- 配置初始化大小、最小、最大 -->
-		<property name="initialSize" value="${initialSize}" />
-		<property name="minIdle" value="${minIdle}" />
-		<property name="maxActive" value="${maxActive}"></property>
+		<property name="initialSize" value="${druid.initialSize}" />
+		<property name="minIdle" value="${druid.minIdle}" />
+		<property name="maxActive" value="${druid.maxActive}"></property>
 		<!-- 最长等待时间 -->
-		<property name="maxWait" value="${maxWait}" />
+		<property name="maxWait" value="${druid.maxWait}" />
 		<!-- 间隔多久检测需要关闭的连接 -->
-		<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${druid.timeBetweenEvictionRunsMillis}" />
 		<!-- 配置一个连接在池中的最小生存时间 -->
-		<property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"></property>
+		<property name="minEvictableIdleTimeMillis" value="${druid.minEvictableIdleTimeMillis}"></property>
 		<!-- 测试连接的语句 -->
-		<property name="validationQuery" value="${validationQuery}"></property>
-		<property name="testWhileIdle" value="${testWhileIdle}"></property>
-		<property name="testOnBorrow" value="${testOnBorrow}"></property>
-		<property name="testOnReturn" value="${testOnReturn}"></property>
+		<property name="validationQuery" value="${druid.validationQuery}"></property>
+		<property name="testWhileIdle" value="${druid.testWhileIdle}"></property>
+		<property name="testOnBorrow" value="${druid.testOnBorrow}"></property>
+		<property name="testOnReturn" value="${druid.testOnReturn}"></property>
 		<!-- 配置监控统计拦截的filters -->
-		<property name="filters" value="${filters}"></property>
+		<property name="filters" value="${druid.filters}"></property>
 	</bean>
 	
 </beans>
