@@ -11,19 +11,13 @@ import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoDatabase;
 
-@Component
 public class MongoDBDao {
 	private static MongoClient instance = null;
-	@Value("#{appProperties['mongodb.ip']}")
-	private static String ip;
-	@Value("#{appProperties['mongodb.port']}")
-	private static Integer port;
-	@Value("#{appProperties['mongodb.username']}")
-	private static String username;
-	@Value("#{appProperties['mongodb.password']}")
-	private static String password;
-	@Value("#{appProperties['mongodb.database']}")
-	private static String database;
+	private static String ip = "123.206.209.13";
+	private static Integer port = 27017;
+	private static String username = "jeffwcx";
+	private static String password = "jeffwcx";
+	private static String database = "freeform";
 	
 	{
 		ServerAddress serverAddress = new ServerAddress(ip, port);

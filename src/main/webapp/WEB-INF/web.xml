@@ -28,7 +28,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath:springmvc-servlet.xml
+			/WEB-INF/springmvc-servlet.xml
 			classpath:dataSource-context.xml
 			classpath:persistence-context.xml
 			classpath:service-context.xml

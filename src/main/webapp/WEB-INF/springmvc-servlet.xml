@@ -101,6 +101,7 @@
 		<property name="basenames">
 			<list>
 				<value>classpath:validate/Validate</value>
+				<value>classpath:org/hibernate/validator/ValidationMessages</value>
 			</list>
 		</property>
 		<property name="useCodeAsDefaultMessage" value="false" />
@@ -125,7 +126,6 @@
 		</property>
 		<property name="favorParameter" value="true" />
 	</bean>
-	
 	
 	
 	

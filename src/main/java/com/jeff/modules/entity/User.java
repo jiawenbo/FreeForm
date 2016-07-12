@@ -19,15 +19,12 @@ public class User {
 	private String registerTime;
 	
 	
-	
 	public User(){
 		
 	}
 	
-	public User(String id, String userName, String password, String headPic,
+	public User(String userName, String password, String headPic,
 			String mail, String registerTime) {
-		super();
-		this.id = id;
 		this.userName = userName;
 		this.password = password;
 		this.headPic = headPic;
@@ -39,10 +36,9 @@ public class User {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid")
-	
 	@Column(name = "id", unique = true, nullable = false)
 	public String getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(String id) {
@@ -51,7 +47,7 @@ public class User {
 	
 	@Column(name = "user_name")
 	public String getUserName() {
-		return userName;
+		return this.userName;
 	}
 
 	public void setUserName(String userName) {
@@ -60,7 +56,7 @@ public class User {
 	
 	@Column(name = "password", nullable = false)
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
@@ -69,16 +65,17 @@ public class User {
 	
 	@Column(name = "head_pic")
 	public String getHeadPic() {
-		return headPic;
+		return this.headPic;
 	}
 
 	public void setHeadPic(String headPic) {
 		this.headPic = headPic;
 	}
 	
+	
 	@Column(name = "mail", nullable = false)
 	public String getMail() {
-		return mail;
+		return this.mail;
 	}
 
 	public void setMail(String mail) {
@@ -87,7 +84,7 @@ public class User {
 	
 	@Column(name = "register_time", nullable = false)
 	public String getRegisterTime() {
-		return registerTime;
+		return this.registerTime;
 	}
 
 	public void setRegisterTime(String registerTime) {

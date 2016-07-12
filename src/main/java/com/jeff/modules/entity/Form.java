@@ -19,9 +19,7 @@ public class Form {
 		
 		
 	}
-	public Form(String id, String userId) {
-		super();
-		this.id = id;
+	public Form(String userId) {
 		this.userId = userId;
 	}
 
