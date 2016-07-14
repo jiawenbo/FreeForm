@@ -1,6 +1,8 @@
 package com.jeff.web.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -33,29 +35,21 @@ public class RegisterController {
 	
 	@RequestMapping(value="/register/identify",method=RequestMethod.POST)
 	@ResponseBody
-	public String register(@RequestParam String mail,@RequestParam String password,
+	public Object register(@RequestParam String mail,@RequestParam String password,
 			@Valid @ModelAttribute("userValidate") UserValidate userValidate,
 			BindingResult result)
 	{
+		Map<String, Object> map = new HashMap<String, Object>();
+		String message = "";
 		if(result.hasErrors())
 		{
 			List<ObjectError> list = result.getAllErrors();
-			
-			return list.get(0).getDefaultMessage().toString();
+			message = list.get(0).getDefaultMessage().toString();
 		}
-			else {
-		String msg = userService.register(mail, password);
-		if(msg.equals("ok"))
-		{
-			if(result.hasErrors())
-			{
-				return "Validate error";
-			}
-			else
-				return "Register success";
+		else {
+			message = userService.register(mail, password);
 		}
-		else 
-			return msg;
-	}
+		map.put("message", message);
+		return map;
 	}
 }

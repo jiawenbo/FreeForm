@@ -1,0 +1,62 @@
+/*
+* @Author: Administrator
+* @Date:   2016-07-07 20:12:38
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-07-07 20:46:02
+*/
+.main-content {
+	background-color: #fff;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	position: relative;
+	min-height: 500px;
+}
+
+.avatar-block {
+	height: 150px;
+	text-align: center;
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.avatar-block .avatar-inner {
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	margin-left: -75px;
+	left: 50%;
+
+}
+
+.avatar-block img {
+	width: 150px;
+	height: 150px;
+	border-radius: 150px;
+}
+.input-block {
+	position: absolute;
+	width: 36%;
+	margin-left: -18%;
+	left: 50%;
+}
+
+.input-block input {
+	border-radius: 4px;
+}
+
+.save-item {
+	margin-top: 20px;
+}
+
+.save-btn {
+	width: 90px;
+	height: 40px;
+	padding-top: 8px;
+	position: absolute;
+	margin-left: -45px;
+	left: 50%;
+	border-radius: 4px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	font-size: 15px;
+}

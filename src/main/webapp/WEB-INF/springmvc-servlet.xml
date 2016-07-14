@@ -24,7 +24,8 @@
 	
 	<!-- 设置切面允许 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
-	<mvc:resources location="/resources/admin/" mapping="/resources/admin/**" />
+	<mvc:resources location="/resources/front/" mapping="/resources/front/**" />
+	<mvc:resources location="/resources/file/" mapping="/resources/file/**" />
 	
 	<mvc:annotation-driven validator="validator">
 		<!-- 将string类型转换为json类型 -->
@@ -39,12 +40,12 @@
         </mvc:message-converters>
 	</mvc:annotation-driven>
 	
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/admin/**"/>
-			<bean id="loginInterceptor" class="com.jeff.web.common.LoginInterceptor" />
+			<mvc:mapping path="/**"/>
+			<bean id="loginInterceptor" class="com.jeff.web.common.CommonInterceptor" />
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		为jsp添加jstl标签支持
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
@@ -67,7 +68,7 @@
 		<property name="freemarkerVariables">
 			<map>
 				<!-- admin的路径 -->
-				<entry key="adminBase" value="/tcl/resources/admin" />
+				<entry key="frontBase" value="resources/front" />
 			</map>
 		</property>
 		<property name="freemarkerSettings">

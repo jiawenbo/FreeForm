@@ -101,11 +101,18 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	
 	
 	@Override
-	public void deleteById(Serializable id) {
+	public void deleteById(final Serializable id) {
 		Assert.notNull(id, "通过ID删除时，id不能为空");
-		
-		String hql ="delete from "+clazz.getName()+" a where a.id="+id;
-		hibernateTemplate.bulkUpdate(hql);
+		final String hql ="delete from "+clazz.getName()+" a where a.id=:id";
+		hibernateTemplate.execute(new HibernateCallback <Integer>() {
+			@Override
+			public Integer doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				Query query = session.createQuery(hql);
+				query.setParameter("id", id);
+				return query.executeUpdate();
+			}
+		});
 		
 	}
 
@@ -175,7 +182,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		
 	}
 
-	
 	
 	
 	

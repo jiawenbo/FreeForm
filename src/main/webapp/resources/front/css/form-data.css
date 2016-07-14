@@ -1,0 +1,13 @@
+/*
+* @Author: Administrator
+* @Date:   2016-07-07 21:53:37
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-07-07 21:55:07
+*/
+.main {
+	background-color: #fff;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	position: relative;
+	min-height: 500px;
+}

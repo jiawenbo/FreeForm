@@ -1,0 +1,43 @@
+/*
+* @Author: Administrator
+* @Date:   2016-07-07 17:51:05
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-07-07 20:09:49
+*/
+
+
+.main-content {
+	background-color: #fff;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	position: relative;
+	min-height: 500px;
+}
+.btn-block {
+	width: 100%;
+	height: 60px;
+	padding-top: 13px;
+	padding-left: 10px;
+}
+
+.list-table tr:hover {
+	background-color: #f7f7f7;
+}
+
+.list-table tr:hover .edit-item {
+	visibility: visible;
+}
+
+.list-table tr td:nth-of-type(2){
+	text-align: center;
+}
+
+.list-table tr:nth-last-of-type(1) td{
+	border-bottom: 1px solid #ddd;
+}
+
+.edit-item {
+	margin-left: 5px;
+	margin-right: 5px;
+	visibility: hidden;
+}

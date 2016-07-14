@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/free-form.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>FreeForm HTML 引擎</h1>
+			<button class="btn" id="addForm">添加表单</button>
+			<button class="btn" id="addInput">添加普通文本框</button>
+			<button class="btn" id="addImage">添加图片</button>
+			<button class="btn" id="addRadioInput">添加单选按钮</button>
+			<button class="btn" id="addCheckbox">添加多选按钮</button>
+			<button class="btn" id="addSelectInput">添加下拉框</button>
+			<button class="btn" id="addUploadInput">添加上传组件</button>
+			<button class="btn" id="addHtml">添加html</button>
+		</div>
+		<div class="row" id="addArea">
+			
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/freeform-engine.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var form = "";
+			$("#addForm").on("click", function(){
+				form = new Form("1234567890");
+				$("#addArea").append(form.getDom());
+			});
+
+			$("#addInput").on("click", function(){
+				var input = new OrdinaryInput();
+				form.addElement(input);
+			});
+
+			$("#addImage").on("click", function(){
+				var img = new ImageEle();
+				form.addElement(img);
+				console.log(form);
+			});
+
+			$("#addRadioInput").on("click", function(){
+				var radioInput = new RadioInput();
+				form.addElement(radioInput);
+				radioInput.setChecked(0);
+				radioInput.updateInput(0, "good");
+			});
+
+			$("#addCheckbox").on("click", function(){
+				var checkboxInput = new CheckboxInput();
+				form.addElement(checkboxInput);
+				checkboxInput.addChecked([0,1,2]);
+				checkboxInput.updateInput(0, "good");
+			});
+
+			$("#addSelectInput").on("click", function(){
+				var selectInput = new SelectInput();
+				form.addElement(selectInput);
+				selectInput.setSelected(2);
+				selectInput.updateInput(0, "to");
+			});
+			$("#addUploadInput").on("click", function(){
+				var uploadInput = new UploadInput();
+				form.addElement(uploadInput);
+			});
+
+		});
+	</script>
+</body>
+</html>

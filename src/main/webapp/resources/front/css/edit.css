@@ -1,0 +1,128 @@
+/*
+* @Author: Administrator
+* @Date:   2016-07-08 14:56:30
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-07-13 16:01:13
+*/
+.main {
+	background-color: #fff;
+	position: relative;
+	min-height: 500px;
+}
+
+.main-top {
+	width: 100%;
+	height: 50px;
+	padding: 0 15px;
+}
+
+.border {
+	margin-left: -15px;
+	margin-right: -15px;
+	height: 1px;
+	background-color: #ddd;
+}
+
+.main-top .save-date {
+	height: 100%;
+	line-height: 50px;
+}
+
+.main-top .btns {
+	height: 100%;
+	padding-top: 8px;
+}
+.main-top .btns .btn {
+	margin-left: 10px;
+}
+.main-bottom {
+	width: 100%;
+	min-height: 480px;
+}
+.main-bottom .components {
+	width: 25%;
+	float: left;
+	height: 480px;
+	padding-left: 10px;
+	padding-right: 20px;
+	border-right: 1px solid #ddd;
+}
+
+.component {
+	width: 50%;
+	height: 50px;
+	line-height: 50px;
+	float: left;
+	cursor: pointer;
+}
+
+.c-title {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+
+.main-bottom .design-area {
+	width: 50%;
+	float: left;
+	height: 480px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+
+.main-bottom .properties {
+	width: 25%;
+	float: left;
+	height: 480px;
+	padding-left: 20px;
+	padding-right: 10px;
+	border-left: 1px solid #ddd;
+	overflow: hidden;
+}
+.properties-panel {
+	height: 100%;
+}
+
+.c-content .custom-part {
+	padding-top: 10px;
+}
+.advance-part .c-title {
+	border-top: 1px solid #ddd;
+	margin-bottom: 10px;
+}
+
+.add-option-btn {
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	border-radius: 5px;
+	line-height: 28px;
+	text-align: center;
+	color: #fff;
+	opacity: .8;
+}
+
+.add-option-btn:hover {
+	opacity: 1;
+}
+
+.delete-option-btn {
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	border-radius: 5px;
+	line-height: 28px;
+	text-align: center;
+	background-color: #FF6666;
+	color: #fff;
+	opacity: .8;
+}
+
+.delete-option-btn:hover {
+	opacity: 1;
+}
+
+

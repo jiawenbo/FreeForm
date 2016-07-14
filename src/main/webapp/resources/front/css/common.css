@@ -1,0 +1,141 @@
+/*
+* @Author: Administrator
+* @Date:   2016-07-07 17:41:35
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-07-08 21:17:34
+*/
+/*
+* 表单通用
+*/
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	position: relative;
+}
+
+.input-item {
+	width: 100%;
+	height: 50px;
+	position: relative;
+}
+
+.input-item label {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 70px;
+	height: 100%;
+	line-height: 50px;
+	text-align: right;
+	font-size: 15px;
+}
+
+.input-item .input-inner {
+	width: 100%;
+	padding-left: 100px;
+	height: 100%;
+	padding-top: 10px;
+
+}
+
+.input-inner input {
+	width: 230px;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #bbbbbb;
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+.lg-input {
+	max-width: 350px;
+}
+/*
+* 导航栏
+*/
+.navb {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 80px;
+	color: #fff;
+	background-color: #393a3b;
+	line-height: 80px;
+	padding: 0 10%;
+}
+
+.navb .logo {
+	height: 100%;
+	font-size: 30px;
+	float: left;
+}
+
+.navb .avatar {
+	display: block;
+	height: 100%;
+	float: right;
+	width: 80px;
+	padding: 10px 10px;
+}
+.navb .avatar img {
+	vertical-align: baseline;
+	width: 60px;
+	height: 60px;
+	border-radius: 60px;
+}
+
+.navb~.content {
+	width: 100%;
+	padding-top: 80px;
+	min-height: 100%;
+	background-color: #e6e6e6;
+	height: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/*
+* 
+* 滚动条样式
+*
+*/
+/* 
+::-webkit-scrollbar {
+	width: 5px;
+	background-color: rgba(194, 194, 194, .7);
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background-color: rgba(57, 58, 59, .6);
+}
+
+scrollbar-track-color {
+	background-color: rgba(194, 194, 194, .7);
+}
+scrollbar-face-color {
+	background-color: rgba(194, 194, 194, .7);
+}
+
+@-moz-document url-prefix(http://),url-prefix(https://) {
+	scrollbar{
+		-moz-appearance: none !important;   
+		width: 5px;
+		background-color: rgba(194, 194, 194, .7);
+	}
+
+	thumb, scrollbarbutton {
+		-moz-appearance: none !important;
+		border-radius: 5px;
+		background-color: rgba(57, 58, 59, .6);
+	}
+} */

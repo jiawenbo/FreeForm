@@ -14,13 +14,17 @@ import org.hibernate.annotations.GenericGenerator;
 public class Form {
 	private String id;
 	private String userId;
+	private Boolean isPublish;
+	private String name;
 	
 	 public Form() {
 		
 		
 	}
-	public Form(String userId) {
+	public Form(String userId, Boolean isPublish, String name) {
 		this.userId = userId;
+		this.isPublish = isPublish;
+		this.name = name;
 	}
 
 	
@@ -45,6 +49,23 @@ public class Form {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	
+	
+	@Column(name = "is_publish")
+	public Boolean getIsPublish() {
+		return isPublish;
+	}
+	public void setIsPublish(Boolean isPublish) {
+		this.isPublish = isPublish;
+	}
+	
+	@Column(name = "name")
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
