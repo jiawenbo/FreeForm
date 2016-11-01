@@ -48,17 +48,54 @@
 			</div>
     	</section>
     	<script type="text/javascript" src="${frontBase}/lib/jquery/jquery.js"></script>
-    	<script src="${frontBase}/js/jquery.form.js"></script>
+    	<script src="${frontBase}/js/upload.js"></script>
     	<script type="text/javascript">
     		$(function(){
-    			$("#upload").on("change", function(e){
-    				$('#upload-form').ajaxSubmit({
-    					url:"upload",
-    					success:function(data) {
-    						targetImg.src = data.url;
-    					}
-    				});
-    			});
+    			var readConfig = {
+					// 上传格式
+					fileFormat: ['image/gif','image/png','image/jpg','image/jpeg'],
+					// 最小文件大小
+					minFileSize: 102400,
+					// 最大文件大小
+					maxFileSize: 20971520,
+					// 读取显示区域
+					image: $("#targetImg")[0],
+					start: function(){
+						console.log("开始上传");
+					},
+					success: function(){
+						console.log("上传成功");
+					},
+					error: function(){
+						console.log("上传失败");
+					}
+				};
+				var uploadConfig = {
+					url:"upload",
+					start: function(){
+						console.log("正在上传");
+					},
+					success: function(data, img){
+						targetImg.src = data.url;
+					},
+					error: function(){
+						
+					}
+				};
+    		
+    			var settings = {
+					event: "click"
+				};
+				upload($("#upload")[0], readConfig, uploadConfig, settings);
+				
+    			//$("#upload").on("change", function(e){
+    			//	$('#upload-form').ajaxSubmit({
+    			//		url:"upload",
+    			//		success:function(data) {
+    			//			targetImg.src = data.url;
+    			//		}
+    			//	});
+    			//});
     			$(".save-btn").on('click', function(e){
     				var obj = {};
     				obj.HeadPic = $("#targetImg").attr("src");

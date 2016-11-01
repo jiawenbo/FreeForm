@@ -28,8 +28,8 @@ public class MongoDBDao {
 				.createScramSha1Credential(username, database, password.toCharArray());
 		List<MongoCredential> credentials = new ArrayList<MongoCredential>();
 		credentials.add(credential);*/
-		instance = new MongoClient( "localhost" , 27017 );
-		mongoDatabase = instance.getDatabase(database); 
+		/*instance = new MongoClient( "localhost" , 27017 );
+		mongoDatabase = instance.getDatabase(database); */
 //		instance = new MongoClient(serverAddress, credentials);
 	}
 	
